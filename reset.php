@@ -50,13 +50,26 @@ if ($receivedData != false) {
 
 function sendPasswordResetEmail($email, $resetToken)
 {
+    // Get the current page's protocol (http or https)
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+
+    // Get the host (localhost or domain name)
+    $host = $_SERVER['HTTP_HOST'];
+
+    // Get the path and script name (e.g., /project/example.php)
+    $path = $_SERVER['REQUEST_URI'];
+
+    // Construct the full URL
+    $rootDirectory = $protocol . '://' . $host . $path;
+
+
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $to_email = $email;
         $subject = "Reset Password";
         $body = '
         <p>Hello,</p>
         <p>You have requested to reset your password. Please click on the link below to reset your password:</p>
-        <p><a href="http://localhost/ds-practical/reset.php?data=' . $resetToken . '">Reset Password</a></p>
+        <p><a href=" ' . $rootDirectory . '?data=' . $resetToken . '">Reset Password</a></p>
         <p>If you did not request this, please ignore this email.</p>
         <p>Regards,<br>Distributed Assignment</p>
         ';
