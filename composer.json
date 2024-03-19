@@ -1,5 +1,15 @@
 {
+    "name": "admin/distributed_sys_assignment",
+    "description": "Email password reset",
+    "type": "project",
     "require": {
         "phpmailer/phpmailer": "^6.9"
-    }
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Admin\\DistributedSysAssignment\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
 }
