@@ -44,13 +44,14 @@
             </div>
             <?php
             // Database connection
-            $servername = "localhost";
-            $dbusername = "root";
-            $dbpassword = "";
-            $database = "ds_userdb";
+            $servername = "reset.mysql.database.azure.com";
+            $dbusername = "qydbtcaewv";
+            $dbpassword = "@reset123";
+            $database = "reset-db";
 
             $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
             if ($conn->connect_error) {
+                echo "connection failed!!!";
                 die("Connection failed: " . $conn->connect_error);
             }
 

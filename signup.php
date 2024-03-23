@@ -83,6 +83,7 @@ include "mail.php";
 
                             // Check connection
                             if ($conn->connect_error) {
+                                echo 'connection failed';
                                 die("Connection failed: " . $conn->connect_error);
                             }
 

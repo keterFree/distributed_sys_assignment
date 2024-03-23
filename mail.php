@@ -1,10 +1,10 @@
 <?php
- // Database connection parameters
- $servername = "localhost";
- $dbusername = "root";
- $dbpassword = "";
- $database = "ds_userdb";
- 
+// Database connection
+$servername = "reset.mysql.database.azure.com";
+$dbusername = "qydbtcaewv";
+$dbpassword = "@reset123";
+$database = "reset-db";
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

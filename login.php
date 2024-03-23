@@ -34,11 +34,11 @@
 
                     // Retrieve hashed password from the database
 
-                    // Database connection parameters
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $database = "ds_userdb";
+                    // Database connection
+                    $servername = "reset.mysql.database.azure.com";
+                    $dbusername = "qydbtcaewv";
+                    $dbpassword = "@reset123";
+                    $database = "reset-db";
 
                     // Create connection
                     $conn = new mysqli($servername, $username, $password, $database);
