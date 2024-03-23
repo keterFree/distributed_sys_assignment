@@ -25,7 +25,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" id="try">Login</button>
             <div style="color: red;">
                 <?php
                 $data = 1;
@@ -78,7 +78,7 @@
                         // Verify if the user-entered password matches the stored hashed password
                         // password_verify($userEnteredPassword, $hashedPassword))
                         if ($userEnteredPassword == $hashedPassword) {
-                            echo "match found";
+                            echo "match found</btr>";
                             // Start the session
                             session_start();
 
@@ -120,6 +120,7 @@
 <script>
     // Define a function to navigate to a new page
     function redirectToNewPage() {
+        document.getElementById('try').innerHTML = 'Tring to navigate';
         window.location.href = "index.php";
     }
 
