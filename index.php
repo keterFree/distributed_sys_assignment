@@ -11,7 +11,8 @@
 <body>
     <header>
         <h1>Assignment home page</h1>
-        <div>Testing</div>
+        <div><?php phpinfo(); ?>
+        </div>
         <nav class="nav">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -53,11 +54,11 @@
                 $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
                 if ($conn->connect_error) {
                     throw 'connection error';
-                }else{
+                } else {
                     echo "connection success!";
                 }
             } catch (\Throwable $th) {
-                
+
                 die("Connection failed: ");
             }
             // $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
