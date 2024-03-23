@@ -128,7 +128,7 @@ include "mail.php";
 
                                     if (sendEmail($to_email, $subject, $body, $from_email)) {
                                         echo "Email sent successfully.";
-                                        header("Location: login.php");
+                                        echo '<script>redirectToNewPage()</script>';
                                     } else {
                                         echo "Email sending failed.";
                                     }
@@ -160,5 +160,13 @@ include "mail.php";
     </footer>
 
 </body>
+<script>
+        // Define a function to navigate to a new page
+        function redirectToNewPage() {
+            window.location.href = "new_page_destination.php";
+        }
 
+        // Call the function to trigger the navigation
+        
+    </script>
 </html>

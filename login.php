@@ -89,6 +89,7 @@
                             // Redirect to the home page
                             header("Location: index.php");
                             exit();
+                            
                         } else {
                             // Redirect back to the login page with an error message
                             // header("Location: login.php?error=1");

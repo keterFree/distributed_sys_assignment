@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>Assignment home page</h1>
-        <div><?php phpinfo(); ?>
+        <div><?php 'aaa' ?>
         </div>
         <nav class="nav">
             <ul>
