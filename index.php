@@ -11,6 +11,7 @@
 <body>
     <header>
         <h1>Assignment home page</h1>
+        <div>Testing</div>
         <nav class="nav">
             <ul>
                 <li><a href="#">Home</a></li>
