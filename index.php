@@ -52,9 +52,11 @@
                 $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
                 if ($conn->connect_error) {
                     throw 'connection error';
+                }else{
+                    echo "connection success!";
                 }
             } catch (\Throwable $th) {
-                echo "connection failed!!!";
+                
                 die("Connection failed: ");
             }
             // $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
