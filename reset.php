@@ -200,7 +200,7 @@ function sendPasswordResetEmail($email, $resetToken)
                         if (isset($stmt_update)) $stmt_update->close();
                         if (isset($stmt_insert)) $stmt_insert->close();
                         // header("location: sent.html");
-                        echo '<script>window.location.href = "sent.php"</script>';
+                        echo '<script>window.location.href = "sent.html"</script>';
                     } else {
                         echo "No account with this email.";
                         $receivedData = 2;
