@@ -48,12 +48,20 @@
             $dbusername = "qydbtcaewv";
             $dbpassword = "@reset123";
             $database = "reset-db";
-
-            $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
-            if ($conn->connect_error) {
+            try {
+                $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+                if ($conn->connect_error) {
+                    throw 'connection error';
+                }
+            } catch (\Throwable $th) {
                 echo "connection failed!!!";
-                die("Connection failed: " . $conn->connect_error);
+                die("Connection failed: ");
             }
+            // $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+            // if ($conn->connect_error) {
+            //     echo "connection failed!!!";
+            //     die("Connection failed: " . $conn->connect_error);
+            // }
 
             // Check if the search button was clicked
             if (isset($_GET["get"])) {

@@ -51,7 +51,7 @@ include "mail.php";
                 <input type="password" id="cpassword" name="cpassword" required>
             </div>
             <button type="submit">Sign Up</button>
-            <?php if ($_SERVER['REQUEST_METHOD']!='POST') : ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] != 'POST') : ?>
                 <div> Already have an account,<a href='login.php'>login</a>?</div>
             <?php endif; ?>
             <?php
@@ -78,13 +78,14 @@ include "mail.php";
                         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
-                            // Create connection
-                            $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
-
-                            // Check connection
-                            if ($conn->connect_error) {
-                                echo 'connection failed';
-                                die("Connection failed: " . $conn->connect_error);
+                            try {
+                                $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+                                if ($conn->connect_error) {
+                                    throw 'connection error';
+                                }
+                            } catch (\Throwable $th) {
+                                echo "connection failed!!!";
+                                die("Connection failed: ");
                             }
 
                             // Hash the password
@@ -94,7 +95,7 @@ include "mail.php";
                             $stmt = $conn->prepare($sql);
 
                             // Bind the parameters to the statement
-                            
+
                             $stmt->bind_param("sss", $username, $email, $adm);
 
                             // Execute the query
