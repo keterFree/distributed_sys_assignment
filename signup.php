@@ -128,7 +128,7 @@ include "mail.php";
 
                                     if (sendEmail($to_email, $subject, $body, $from_email)) {
                                         echo "Email sent successfully.";
-                                        echo '<script>redirectToNewPage()</script>';
+                                        echo '<script>window.location.href = "login.php"</script>';
                                     } else {
                                         echo "Email sending failed.";
                                     }
