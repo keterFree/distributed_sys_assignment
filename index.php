@@ -112,10 +112,10 @@
         <div class="main-content" id="div3">
             <?php
             // Database connection
-            $servername = "localhost";
-            $dbusername = "root";
-            $dbpassword = "";
-            $database = "ds_userdb";
+            $servername = "reset.mysql.database.azure.com";
+            $dbusername = "qydbtcaewv";
+            $dbpassword = "@reset123";
+            $database = "reset-db";
 
             $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
 
