@@ -87,9 +87,9 @@
                             echo $_SESSION["username"];
 
                             // Redirect to the home page
-                            header("Location: index.php");
+                            // header("Location: index.php");
+                            echo '<script>redirectToNewPage()</script>';
                             exit();
-                            
                         } else {
                             // Redirect back to the login page with an error message
                             // header("Location: login.php?error=1");
@@ -117,5 +117,13 @@
         <p>&copy; distributed systems assignment.</p>
     </footer>
 </body>
+<script>
+    // Define a function to navigate to a new page
+    function redirectToNewPage() {
+        window.location.href = "index.php";
+    }
+
+    // Call the function to trigger the navigation
+</script>
 
 </html>
