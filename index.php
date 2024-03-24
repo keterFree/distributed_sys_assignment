@@ -40,7 +40,7 @@
                     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
                 } else {
                     // Display login button if the cookie is not set
-                    echo "<a href='login.php' class='button'>Login</a>";
+                    echo "<a href='login.php' class='button'>Login</a></br>Cookies set";
                 }
                 ?>
 
