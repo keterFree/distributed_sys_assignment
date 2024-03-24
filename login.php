@@ -78,12 +78,22 @@
                         // Verify if the user-entered password matches the stored hashed password
                         // password_verify($userEnteredPassword, $hashedPassword))
                         if ($userEnteredPassword == $hashedPassword) {
-                            // Redirect to the home page with the username passed as a parameter
-                            header("Location: index.php?username=" . urlencode($uname));
+                            echo "match found</btr>";
+                            // Start the session
+                            session_start();
+
+                            // Store the username in the session
+                            $_SESSION["username"] = $uname;
+                            echo $_SESSION["username"];
+
+                            // Redirect to the home page
+                            // header("Location: index.php");
+                            echo '<script>window.location.href = "index.php"</script>';
                             exit();
                         } else {
                             // Redirect back to the login page with an error message
-                            echo "incorrect password, please retry";
+                            // header("Location: login.php?error=1");
+                            echo "incorrect password,please retry";
                         }
                     } else {
                         // No matching user found
