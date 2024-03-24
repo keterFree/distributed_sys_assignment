@@ -79,22 +79,18 @@
                         // password_verify($userEnteredPassword, $hashedPassword))
                         if ($userEnteredPassword == $hashedPassword) {
                             echo "match found</btr>";
-                            // Start the session
-                            session_start();
-
-                            // Store the username in the session
-                            $_SESSION["username"] = $uname;
-                            echo $_SESSION["username"];
-
+                        
+                            // Set a cookie with the username
+                            setcookie("username", $uname, time() + (86400 * 30), "/"); // 30 days expiration
+                        
                             // Redirect to the home page
-                            // header("Location: index.php");
                             echo '<script>window.location.href = "index.php"</script>';
                             exit();
                         } else {
                             // Redirect back to the login page with an error message
-                            // header("Location: login.php?error=1");
-                            echo "incorrect password,please retry";
+                            echo "incorrect password, please retry";
                         }
+                        
                     } else {
                         // No matching user found
                         echo "Incorrect email or username, please retry";

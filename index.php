@@ -33,16 +33,17 @@
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
-                session_start();
-                if (isset($_SESSION['username'])) {
-                    // Display user details if logged in
-                    echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
+                // Check if the "username" cookie is set
+                if (isset($_COOKIE['username'])) {
+                    // Display user details if the cookie is set
+                    echo "<h2>Welcome, " . $_COOKIE['username'] . "</h2>";
                     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
                 } else {
-                    // Display login button if not logged in
+                    // Display login button if the cookie is not set
                     echo "<a href='login.php' class='button'>Login</a>";
                 }
                 ?>
+
             </div>
             <?php
             // Database connection
