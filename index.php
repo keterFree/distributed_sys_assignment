@@ -37,7 +37,7 @@ session_start();
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
-                if (isset($_SESSION['username'])) {
+                if ($_SESSION['username']) {
                     // Display user details if logged in
                     echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
                     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
