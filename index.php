@@ -33,16 +33,18 @@
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
-                // Check if the "username" cookie is set
-                if (isset($_COOKIE['username'])) {
-                    // Display user details if the cookie is set
-                    echo "<h2>Welcome, " . $_COOKIE['username'] . "</h2>";
+                // Check if the username parameter is set in the URL
+                if (isset($_GET['username'])) {
+                    // Display user details if the parameter is set
+                    $username = $_GET['username'];
+                    echo "<h2>Welcome, " . htmlspecialchars($username) . "</h2>";
                     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
                 } else {
-                    // Display login button if the cookie is not set
-                    echo "<a href='login.php' class='button'>Login</a></br>Cookies set";
+                    // Display login button if the parameter is not set
+                    echo "<a href='login.php' class='button'>Login</a>";
                 }
                 ?>
+
 
             </div>
             <?php

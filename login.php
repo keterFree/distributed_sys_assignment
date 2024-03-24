@@ -78,19 +78,13 @@
                         // Verify if the user-entered password matches the stored hashed password
                         // password_verify($userEnteredPassword, $hashedPassword))
                         if ($userEnteredPassword == $hashedPassword) {
-                            echo "match found</btr>";
-                        
-                            // Set a cookie with the username
-                            setcookie("username", $uname, time() + (86400 * 30), "/"); // 30 days expiration
-                        
-                            // Redirect to the home page
-                            echo '<script>window.location.href = "index.php"</script>';
+                            // Redirect to the home page with the username passed as a parameter
+                            header("Location: index.php?username=" . urlencode($uname));
                             exit();
                         } else {
                             // Redirect back to the login page with an error message
                             echo "incorrect password, please retry";
                         }
-                        
                     } else {
                         // No matching user found
                         echo "Incorrect email or username, please retry";
