@@ -1,6 +1,5 @@
 <?php
 session_start();
-phpinfo();
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +37,7 @@ phpinfo();
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
+                echo session_save_path();
                 if ($_SESSION['username']) {
                     // Display user details if logged in
                     echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
