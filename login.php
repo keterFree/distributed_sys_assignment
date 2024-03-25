@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1>Distributed systems Assignment Login Page</h1>
+        <h1>Login Page</h1>
     </header>
 
 
