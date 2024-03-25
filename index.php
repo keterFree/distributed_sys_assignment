@@ -37,16 +37,24 @@ session_start();
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
-                echo session_save_path();
-                if ($_SESSION['username']) {
-                    // Display user details if logged in
-                    echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
-                    echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
-                } else {
-                    // Display login button if not logged in
-                    echo "<a href='login.php' class='button'>Login</a>";
-                }
+                // echo session_save_path();
+                // if ($_SESSION['username']) {
+                //     // Display user details if logged in
+                //     echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
+                //     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
+                // } else {
+                //     // Display login button if not logged in
+                //     echo "<a href='login.php' class='button'>Login</a>";
+                // }
                 ?>
+                <div id="in" style="display: none;">
+                    <h2 id='h2'></h2>
+                    <div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>
+                </div>
+
+                <div id="out" style="display: none;">
+                    <a href='login.php' class='button'>Login</a>
+                </div>
             </div>
             <?php
             // Database connection
@@ -156,5 +164,24 @@ session_start();
         <p>&copy; Distributed systems assignment</p>
     </footer>
 </body>
+<script>
+    // Retrieve data from local storage
+    const storedData = localStorage.getItem('divContents');
+
+    // Check if data retrieval was successful
+    if (storedData) {
+        // Display the "in" div and hide the "out" div
+        document.getElementById('in').style.display = 'block';
+        document.getElementById('out').style.display = 'none';
+
+        // Update the content of the h2 element
+        const h2Element = document.getElementById('h2');
+        h2Element.textContent = 'Welcome ' + storedData;
+    } else {
+        // Display the "out" div and hide the "in" div
+        document.getElementById('out').style.display = 'block';
+        document.getElementById('in').style.display = 'none';
+    }
+</script>
 
 </html>

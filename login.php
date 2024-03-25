@@ -82,9 +82,12 @@
                             // Start the session
                             session_start();
 
-                            // Store the username in the session
-                            $_SESSION["username"] = $uname;
-                            echo $_SESSION["username"];
+                            // // Store the username in the session
+                            // $_SESSION["username"] = $uname;
+                            // echo $_SESSION["username"];
+
+                            echo '<div id="usn" style="display: none;">$uname</div>';
+                            echo '<script>storeDivContents()</script>';
 
                             // Redirect to the home page
                             // header("Location: index.php");
@@ -124,7 +127,24 @@
         window.location.href = "index.php";
     }
 
-    // Call the function to trigger the navigation
+
+    function storeDivContents() {
+        // Get the div element by its ID
+        const divElement = document.getElementById('usn');
+
+        // Check if the div element exists
+        if (divElement) {
+            // Get the contents of the div
+            const divContents = divElement.innerHTML;
+
+            // Store the contents in local storage
+            localStorage.setItem('divContents', divContents);
+
+            alert('Div contents stored in local storage!');
+        } else {
+            alert('Div element not found!');
+        }
+    }
 </script>
 
 </html>
