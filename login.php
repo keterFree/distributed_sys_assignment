@@ -93,9 +93,14 @@
                             // $_SESSION["username"] = $uname;
                             // echo $_SESSION["username"];
 
+
                             echo '<div id="usn" style="display: none;">$uname</div>';
                             echo '<script>';
-                            echo 'storeDivContents()';
+                            echo 'function myFunction() {';
+                            echo 'alert("Hello from JavaScript!");';
+                            echo '}';
+                            echo 'myFunction();'; // Call the JavaScript function
+                            echo 'storeDivContents();';
                             echo '</script>';
 
                             // Redirect to the home page
