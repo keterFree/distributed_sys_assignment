@@ -67,7 +67,7 @@ session_start();
                 if ($conn->connect_error) {
                     throw 'connection error';
                 } else {
-                    echo "connection success!";
+                    // echo "connection success!";
                 }
             } catch (\Throwable $th) {
 

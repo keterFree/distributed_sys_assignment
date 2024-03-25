@@ -27,9 +27,9 @@
             // Store the contents in local storage
             localStorage.setItem('divContents', divContents);
 
-            alert('Div contents stored in local storage!');
+            // alert('Div contents stored in local storage!');
         } else {
-            alert('Div element not found!');
+            alert('You are Logged in!');
         }
     }
 </script>
@@ -58,13 +58,6 @@
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                    echo '<script>';
-                    echo 'function myFunction() {';
-                    echo 'alert("Hello from JavaScript!");';
-                    echo '}';
-                    echo 'myFunction();'; // Call the JavaScript function
-                    echo '</script>';
-
                     // Retrieve hashed password from the database
 
                     // Database connection
@@ -86,7 +79,7 @@
                     $userInput = $_POST["username"];
 
                     // Prepare SQL statement
-                    $sql = "SELECT `password`, `Username` FROM `users` WHERE username = ? OR email = ?";
+                    $sql = "SELECT `password`, `Username`,`Name` FROM `users` WHERE username = ? OR email = ?";
                     $stmt = $conn->prepare($sql);
 
                     // Bind the parameter to the statement
@@ -101,7 +94,7 @@
                     // Check if the query returned any rows
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
-                        $uname  = $row['Username'];
+                        $uname  = $row['Name'];
                         $hashedPassword = $row['password'];
 
 
@@ -120,12 +113,8 @@
                             // echo $_SESSION["username"];
 
 
-                            echo '<div id="usn" style="display: none;">$uname</div>';
+                            echo '<div id="usn" style="display: none;">'.$uname.'</div>';
                             echo '<script>';
-                            echo 'function myFunction() {';
-                            echo 'alert("Hello from JavaScript!");';
-                            echo '}';
-                            echo 'myFunction();'; // Call the JavaScript function
                             echo 'storeDivContents();';
                             echo '</script>';
 
