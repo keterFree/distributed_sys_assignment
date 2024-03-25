@@ -176,7 +176,7 @@ session_start();
 
         // Update the content of the h2 element
         const h2Element = document.getElementById('h2');
-        h2Element.textContent = 'Welcome ' + storedData;
+        h2Element.textContent = storedData;
     } else {
         // Display the "out" div and hide the "in" div
         document.getElementById('out').style.display = 'block';
