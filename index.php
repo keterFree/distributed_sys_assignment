@@ -14,7 +14,7 @@ session_start();
 
 <body>
     <header>
-        <h1>Assignment home page</h1>
+        <h1>Home page</h1>
         <div><?php 'aaa' ?>
         </div>
         <nav class="nav">

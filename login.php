@@ -7,6 +7,32 @@
     <title>Login</title>
     <link rel="stylesheet" href="sign.css">
 </head>
+<script>
+    // Define a function to navigate to a new page
+    function redirectToNewPage() {
+        document.getElementById('try').innerHTML = 'Tring to navigate';
+        window.location.href = "index.php";
+    }
+
+
+    function storeDivContents() {
+        // Get the div element by its ID
+        const divElement = document.getElementById('usn');
+
+        // Check if the div element exists
+        if (divElement) {
+            // Get the contents of the div
+            const divContents = divElement.innerHTML;
+
+            // Store the contents in local storage
+            localStorage.setItem('divContents', divContents);
+
+            alert('Div contents stored in local storage!');
+        } else {
+            alert('Div element not found!');
+        }
+    }
+</script>
 
 <body>
     <header>
@@ -134,31 +160,6 @@
         <p>&copy; distributed systems assignment.</p>
     </footer>
 </body>
-<script>
-    // Define a function to navigate to a new page
-    function redirectToNewPage() {
-        document.getElementById('try').innerHTML = 'Tring to navigate';
-        window.location.href = "index.php";
-    }
 
-
-    function storeDivContents() {
-        // Get the div element by its ID
-        const divElement = document.getElementById('usn');
-
-        // Check if the div element exists
-        if (divElement) {
-            // Get the contents of the div
-            const divContents = divElement.innerHTML;
-
-            // Store the contents in local storage
-            localStorage.setItem('divContents', divContents);
-
-            alert('Div contents stored in local storage!');
-        } else {
-            alert('Div element not found!');
-        }
-    }
-</script>
 
 </html>
