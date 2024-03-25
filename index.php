@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,9 @@
 
 <body>
     <header>
-        <h1>Assignment home page</h1>
+        <h1>Home page</h1>
+        <div><?php 'aaa' ?>
+        </div>
         <nav class="nav">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -31,28 +37,47 @@
         <div class="main-content" id="div1">
             <div class="main-content" id="div2">
                 <?php
-                session_start();
-                if (isset($_SESSION['username'])) {
-                    // Display user details if logged in
-                    echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
-                    echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
-                } else {
-                    // Display login button if not logged in
-                    echo "<a href='login.php' class='button'>Login</a>";
-                }
+                // echo session_save_path();
+                // if ($_SESSION['username']) {
+                //     // Display user details if logged in
+                //     echo "<h2>Welcome, " . $_SESSION['username'] . "</h2>";
+                //     echo "<div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>";
+                // } else {
+                //     // Display login button if not logged in
+                //     echo "<a href='login.php' class='button'>Login</a>";
+                // }
                 ?>
+                <div id="in" style="display: none;">
+                    <h2 id='h2'></h2>
+                    <div class='profile-image'><img src='assets\profile.png' alt='Profile Image'></div>
+                </div>
+
+                <div id="out" style="display: none;">
+                    <a href='login.php' class='button'>Login</a>
+                </div>
             </div>
             <?php
             // Database connection
-            $servername = "localhost";
-            $dbusername = "root";
-            $dbpassword = "";
-            $database = "ds_userdb";
+            $servername = "reset.mysql.database.azure.com";
+            $dbusername = "qydbtcaewv";
+            $dbpassword = "@reset123";
+            $database = "reset-db";
+            try {
+                $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+                if ($conn->connect_error) {
+                    throw 'connection error';
+                } else {
+                    // echo "connection success!";
+                }
+            } catch (\Throwable $th) {
 
-            $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                die("Connection failed: ");
             }
+            // $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+            // if ($conn->connect_error) {
+            //     echo "connection failed!!!";
+            //     die("Connection failed: " . $conn->connect_error);
+            // }
 
             // Check if the search button was clicked
             if (isset($_GET["get"])) {
@@ -99,10 +124,10 @@
         <div class="main-content" id="div3">
             <?php
             // Database connection
-            $servername = "localhost";
-            $dbusername = "root";
-            $dbpassword = "";
-            $database = "ds_userdb";
+            $servername = "reset.mysql.database.azure.com";
+            $dbusername = "qydbtcaewv";
+            $dbpassword = "@reset123";
+            $database = "reset-db";
 
             $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
 
@@ -139,5 +164,25 @@
         <p>&copy; Distributed systems assignment</p>
     </footer>
 </body>
+<script>
+    // Retrieve data from local storage
+    const storedData = localStorage.getItem('divContents');
+
+    // Check if data retrieval was successful
+    if (storedData) {
+        // Display the "in" div and hide the "out" div
+        document.getElementById('in').style.display = 'block';
+        document.getElementById('out').style.display = 'none';
+
+        // Update the content of the h2 element
+        const h2Element = document.getElementById('h2');
+        h2Element.textContent = storedData;
+    } else {
+        // Display the "out" div and hide the "in" div
+        document.getElementById('out').style.display = 'block';
+        document.getElementById('in').style.display = 'none';
+        window.location.href = "login.php";
+    }
+</script>
 
 </html>

@@ -7,10 +7,36 @@
     <title>Login</title>
     <link rel="stylesheet" href="sign.css">
 </head>
+<script>
+    // Define a function to navigate to a new page
+    function redirectToNewPage() {
+        document.getElementById('try').innerHTML = 'Tring to navigate';
+        window.location.href = "index.php";
+    }
+
+
+    function storeDivContents() {
+        // Get the div element by its ID
+        const divElement = document.getElementById('usn');
+
+        // Check if the div element exists
+        if (divElement) {
+            // Get the contents of the div
+            const divContents = divElement.innerHTML;
+
+            // Store the contents in local storage
+            localStorage.setItem('divContents', divContents);
+
+            // alert('Div contents stored in local storage!');
+        } else {
+            alert('You are Logged in!');
+        }
+    }
+</script>
 
 <body>
     <header>
-        <h1>Distributed systems Assignment Login Page</h1>
+        <h1>Login Page</h1>
     </header>
 
 
@@ -25,7 +51,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" id="try">Login</button>
             <div style="color: red;">
                 <?php
                 $data = 1;
@@ -34,26 +60,26 @@
 
                     // Retrieve hashed password from the database
 
-                    // Database connection parameters
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $database = "ds_userdb";
-
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $database);
-
-                    // Check connection
-                    if ($conn->connect_error) {
-                        echo "connection failed!!!";
-                        die("Connection failed: " . $conn->connect_error);
+                    // Database connection
+                    $servername = "reset.mysql.database.azure.com";
+                    $dbusername = "qydbtcaewv";
+                    $dbpassword = "@reset123";
+                    $database = "reset-db";
+                    try {
+                        $conn = new mysqli($servername, $dbusername, $dbpassword, $database);
+                        if ($conn->connect_error) {
+                            throw 'connection error';
+                        }
+                    } catch (\Throwable $th) {
+                        echo "connection failed!!!</br>";
+                        die("Connection failed: ");
                     }
 
                     // User input (username or email)
                     $userInput = $_POST["username"];
 
                     // Prepare SQL statement
-                    $sql = "SELECT `password`, `Username` FROM `users` WHERE username = ? OR email = ?";
+                    $sql = "SELECT `password`, `Username`,`Name` FROM `users` WHERE username = ? OR email = ?";
                     $stmt = $conn->prepare($sql);
 
                     // Bind the parameter to the statement
@@ -68,7 +94,7 @@
                     // Check if the query returned any rows
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
-                        $uname  = $row['Username'];
+                        $uname  = $row['Name'];
                         $hashedPassword = $row['password'];
 
 
@@ -78,16 +104,23 @@
                         // Verify if the user-entered password matches the stored hashed password
                         // password_verify($userEnteredPassword, $hashedPassword))
                         if ($userEnteredPassword == $hashedPassword) {
-                            echo "match found";
+                            echo "match found</btr>";
                             // Start the session
                             session_start();
 
-                            // Store the username in the session
-                            $_SESSION["username"] = $uname;
-                            echo $_SESSION["username"];
+                            // // Store the username in the session
+                            // $_SESSION["username"] = $uname;
+                            // echo $_SESSION["username"];
+
+
+                            echo '<div id="usn" style="display: none;">'.$uname.'</div>';
+                            echo '<script>';
+                            echo 'storeDivContents();';
+                            echo '</script>';
 
                             // Redirect to the home page
-                            header("Location: index.php");
+                            // header("Location: index.php");
+                            echo '<script>window.location.href = "index.php"</script>';
                             exit();
                         } else {
                             // Redirect back to the login page with an error message
@@ -116,5 +149,6 @@
         <p>&copy; distributed systems assignment.</p>
     </footer>
 </body>
+
 
 </html>
