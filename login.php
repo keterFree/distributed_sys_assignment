@@ -32,6 +32,13 @@
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+                    echo '<script>';
+                    echo 'function myFunction() {';
+                    echo 'alert("Hello from JavaScript!");';
+                    echo '}';
+                    echo 'myFunction();'; // Call the JavaScript function
+                    echo '</script>';
+
                     // Retrieve hashed password from the database
 
                     // Database connection
@@ -45,7 +52,7 @@
                             throw 'connection error';
                         }
                     } catch (\Throwable $th) {
-                        echo "connection failed!!!";
+                        echo "connection failed!!!</br>";
                         die("Connection failed: ");
                     }
 
@@ -87,7 +94,9 @@
                             // echo $_SESSION["username"];
 
                             echo '<div id="usn" style="display: none;">$uname</div>';
-                            echo '<script>storeDivContents()</script>';
+                            echo '<script>';
+                            echo 'storeDivContents()';
+                            echo '</script>';
 
                             // Redirect to the home page
                             // header("Location: index.php");
