@@ -16,7 +16,8 @@ function logout()
     echo '</script>';
 
     // Redirect to the login page after logout
-    header("Location: login.php");
+    // header("Location: login.php");
+    echo '<script>window.location.href = "login.php"</script>';
     exit();
 }
 logout();

@@ -181,6 +181,7 @@ session_start();
         // Display the "out" div and hide the "in" div
         document.getElementById('out').style.display = 'block';
         document.getElementById('in').style.display = 'none';
+        window.location.href = "login.php";
     }
 </script>
 
