@@ -11,6 +11,10 @@ function logout()
     // Destroy the session
     session_destroy();
 
+    echo '<script>';
+    echo 'localStorage.removeItem("divContents");';
+    echo '</script>';
+
     // Redirect to the login page after logout
     header("Location: login.php");
     exit();
